@@ -16,14 +16,14 @@ namespace AstrickTowerGenerator
         public int TowerBottomValue()
         {
 
-            List<int> Odds = new();
+            int maxValue = 0;
             for (int i = 0, x=1; i < heightInRows; i++)
             {
-                Odds.Add(x);
+                maxValue = x;
                 x += 2;
             }
 
-            return Odds.Max();
+            return maxValue;
         }
     }
 }
