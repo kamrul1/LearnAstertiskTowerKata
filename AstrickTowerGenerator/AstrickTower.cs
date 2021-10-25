@@ -25,5 +25,10 @@ namespace AstrickTowerGenerator
 
             return maxValue;
         }
+
+        public Tuple<int, int, int> nextRowUp()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
