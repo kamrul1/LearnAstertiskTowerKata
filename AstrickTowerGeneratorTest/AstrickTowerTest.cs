@@ -24,10 +24,10 @@ namespace AstrickTowerGeneratorTest
         {
             var sut = new AstrickTower(3);
             var previousRow = sut.TowerBottomValue();
-            var expected = new Tuple<int,int,int>(1, 3, 1);
+            var expected = (1, 3, 1);
 
 
-            Tuple<int,int,int> result = sut.nextRowUp();
+            (int,int,int) result = sut.nextRowUp();
 
 
             Assert.Equal(expected, result);
