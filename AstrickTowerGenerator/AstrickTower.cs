@@ -13,7 +13,7 @@ namespace AstrickTowerGenerator
 
         public int TowerBottomValue()
         {
-            return 5;
+            return 4;
         }
     }
 }
