@@ -40,7 +40,7 @@ namespace AstrickTowerGeneratorTest2
         }
 
         [Fact]
-        public void ShouldReturnAstrickAllLines()
+        public void ShouldReturnAstrickAll3Lines()
         {
             IAstrickTupleCalculator ast
     = new AstrickTupleCalculator(3);
@@ -55,8 +55,29 @@ namespace AstrickTowerGeneratorTest2
 
             Assert.Equal(expected, result);
 
+        }
+
+        [Fact]
+        public void ShouldReturnAstrickAll5Lines()
+        {
+            IAstrickTupleCalculator ast
+    = new AstrickTupleCalculator(4);
+
+            var sut = new AstrickPrinter(ast);
+
+            var expected =  "   *   \n" +
+                            "  ***  \n" +
+                            " ***** \n" +
+                            "*******\n";
+
+
+            string result = sut.GetAllLines();
+
+            Assert.Equal(expected, result);
 
         }
+
+
 
     }
 
