@@ -27,4 +27,8 @@ Code:
 - repeat until get to 1
 
 
+## Completed working solution
+
+Code written and built into AstrickTowerGeneratorTest2
+
 
