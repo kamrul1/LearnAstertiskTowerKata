@@ -9,6 +9,7 @@ namespace AstrickTowerGeneratorTest2
     public class AstrickPrinter
     {
         private readonly IAstrickTupleCalculator astrickTupleCalculator;
+        private StringBuilder stringBuilder = new();
 
         public AstrickPrinter(IAstrickTupleCalculator astrickTupleCalculator)
         {
@@ -17,7 +18,7 @@ namespace AstrickTowerGeneratorTest2
 
         internal string Bottom()
         {
-            StringBuilder stringBuilder = new();
+            stringBuilder.Clear();
             var noStars = astrickTupleCalculator.StarsBottomLine;
             stringBuilder = AddStars(stringBuilder, noStars);
 
@@ -45,19 +46,9 @@ namespace AstrickTowerGeneratorTest2
 
         private static StringBuilder AddCharacter(StringBuilder stringBuilder, int noChars, CharType charType)
         {
-            for (int i = 0; i < noChars; i++)
-            {
-                if (charType == CharType.Space)
-                {
-                    stringBuilder.Append(' ');
-                    continue;
-                }
-
-                stringBuilder.Append('*');
-                
-            }
-
-            return stringBuilder;
+            return charType == CharType.Space ? 
+                stringBuilder.Append(' ', noChars) 
+                : stringBuilder.Append('*', noChars);
         }
 
 
@@ -66,12 +57,12 @@ namespace AstrickTowerGeneratorTest2
         {
             var starsList = astrickTupleCalculator.GetTupleAtAllLevels();
 
-            StringBuilder stringBuilder = new();
+            stringBuilder.Clear();
 
             for (int i = starsList.Count - 1; i >= 0; i--)
             {
-                (int, int, int) stars = starsList[i];
-                stringBuilder = ConvertTupleToStars(stringBuilder,stars);
+                (int, int, int) starsTuple = starsList[i];
+                stringBuilder = ConvertTupleToStars(stringBuilder,starsTuple);
                 stringBuilder.Append('\n');
             }
 

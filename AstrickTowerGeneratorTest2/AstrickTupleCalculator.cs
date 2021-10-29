@@ -12,10 +12,13 @@ namespace AstrickTowerGeneratorTest2
 
         public int StarsBottomLine
         {
-            get { return (noLines * 2) - 1; }
+            get { return FormulaForBaseStars(); }
         }
 
-
+        private int FormulaForBaseStars()
+        {
+            return (2*noLines) - 1;
+        }
 
         public AstrickTupleCalculator(int noLines)
         {
