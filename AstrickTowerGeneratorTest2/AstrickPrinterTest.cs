@@ -27,12 +27,11 @@ namespace AstrickTowerGeneratorTest2
         [Fact]
         public void ShouldReturnAstrickFromTupple()
         {
-            var sut = new AstrickPrinter(null);
 
             var expected = " *** ";
             var tupleToConvert = (1, 3, 1);
 
-            var result = sut.ConvertTupleToStars(new StringBuilder(),
+            var result = AstrickPrinter.ConvertTupleToStars(new StringBuilder(),
                 tupleToConvert);
 
             Assert.Equal(expected, result.ToString());

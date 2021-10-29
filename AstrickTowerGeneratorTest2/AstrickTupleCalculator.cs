@@ -6,7 +6,9 @@ namespace AstrickTowerGeneratorTest2
 {
     public class AstrickTupleCalculator : IAstrickTupleCalculator
     {
-        private int noLines;
+        private const int ZERO_SPACES = 0;
+        private const int TWO_SIDES = 2;
+        private readonly int noLines;
 
         public int StarsBottomLine
         {
@@ -22,17 +24,27 @@ namespace AstrickTowerGeneratorTest2
 
         internal (int left, int middle, int right) GetTupleAtLevel(int level)
         {
-            if (level == noLines)
+            if (IsBottomLevel(level))
             {
-                return (0, StarsBottomLine, 0);
+                return (ZERO_SPACES, StarsBottomLine, ZERO_SPACES);
             }
 
+            return RemoveTwoSpacesPerLevel(level);
+        }
+
+        private (int left, int middle, int right) RemoveTwoSpacesPerLevel(int level)
+        {
             var levelDiff = noLines - level;
 
-            int middle = StarsBottomLine - (levelDiff * 2);
-            int left = levelDiff, right = levelDiff;
+            int middle = StarsBottomLine - (levelDiff * TWO_SIDES);
+            int spaceOnEachSide = levelDiff;
 
-            return (left, middle, right);
+            return (spaceOnEachSide, middle, spaceOnEachSide);
+        }
+
+        private bool IsBottomLevel(int level)
+        {
+            return level == noLines;
         }
 
         public List<(int, int, int)> GetTupleAtAllLevels()

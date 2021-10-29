@@ -68,8 +68,8 @@ namespace AstrickTowerGeneratorTest2
             var sut = new AstrickTupleCalculator(3);
 
             List<(int, int, int)> expected 
-                = new List<(int, int, int)>
-            {
+                = new()
+                {
                 (0, 5, 0),
                 (1,3,1),
                 (2,1,2)

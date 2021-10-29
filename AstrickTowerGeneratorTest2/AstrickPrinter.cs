@@ -17,7 +17,7 @@ namespace AstrickTowerGeneratorTest2
 
         internal string Bottom()
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new();
             var noStars = astrickTupleCalculator.StarsBottomLine;
             stringBuilder = AddStars(stringBuilder, noStars);
 
@@ -27,43 +27,59 @@ namespace AstrickTowerGeneratorTest2
         private static StringBuilder AddStars(StringBuilder stringBuilder,
             int noStars)
         {
-            for (int i = 0; i < noStars; i++)
-            {
-                stringBuilder.Append("*");
-            }
-
-            return stringBuilder;
+            return AddCharacter(stringBuilder, noStars, CharType.Star);
         }
 
         private static StringBuilder AddSpaces(StringBuilder stringBuilder, 
             int noSpaces)
         {
-            for (int i = 0; i < noSpaces; i++)
+            return AddCharacter(stringBuilder, noSpaces, CharType.Space);
+    
+        }
+
+        public enum CharType { 
+            Space=0,
+            Star=1
+        }
+
+
+        private static StringBuilder AddCharacter(StringBuilder stringBuilder, int noChars, CharType charType)
+        {
+            for (int i = 0; i < noChars; i++)
             {
-                stringBuilder.Append(" ");
+                if (charType == CharType.Space)
+                {
+                    stringBuilder.Append(' ');
+                    continue;
+                }
+
+                stringBuilder.Append('*');
+                
             }
 
             return stringBuilder;
         }
 
-        internal string GetAllLines()
+
+
+        public string GetAllLines()
         {
             var starsList = astrickTupleCalculator.GetTupleAtAllLevels();
 
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder stringBuilder = new();
 
             for (int i = starsList.Count - 1; i >= 0; i--)
             {
                 (int, int, int) stars = starsList[i];
                 stringBuilder = ConvertTupleToStars(stringBuilder,stars);
-                stringBuilder.Append("\n");
+                stringBuilder.Append('\n');
             }
 
             return stringBuilder.ToString();
 
         }
 
-        internal StringBuilder ConvertTupleToStars(StringBuilder stringBuilder,
+        internal static StringBuilder ConvertTupleToStars(StringBuilder stringBuilder,
             (int left, int middle, int right) tupleToConvert)
         {
             
