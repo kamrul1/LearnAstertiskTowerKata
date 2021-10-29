@@ -16,7 +16,7 @@ Example Youtube - see after attempting exercise
         '***'           --0 space then 3 astricks\
 
 3->     '  *  '         --two space then astrick
-        ' *** '         --one space then astricks
+        ' *** '         --one space then astricks -> potentially recusive, unitl one middle
         '*****'         --0 space, then 5 astriks
 
 Bottom number going up by odd values 1, 3, 5...

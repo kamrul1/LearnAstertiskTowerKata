@@ -1,4 +1,4 @@
-using AstrickTowerGenerator;
+
 using System;
 using Xunit;
 
@@ -20,6 +20,23 @@ namespace AstrickTowerGeneratorTest
         }
 
         [Fact]
+        public void ShouldReturnBottomAsTupleOfLeftSpacesMiddleAstricksRightSpaces()
+        {
+            var sut = new AstrickTower(3);
+
+            var expected = (0, 3, 0);
+
+            var bottomValue = sut.TowerBottomValue();
+
+
+            (int, int, int) actual = sut.ConvertToTupple();
+
+            Assert.Equal(expected, actual);
+
+        }
+
+
+        [Fact]
         public void ShouldReturnTwoSpaceLessAstriskAmount()
         {
             var sut = new AstrickTower(3);
@@ -31,6 +48,21 @@ namespace AstrickTowerGeneratorTest
 
 
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void ShouldNextRowUpFromBottom()
+        {
+            var sut = new AstrickTower(3);
+            var previousRow = sut.TowerBottomValue();
+
+            var expected = (2, 1, 2);
+            _= sut.nextRowUp();
+            (int, int, int) result = sut.nextRowUp();
+
+
+            Assert.Equal(expected, result);
+
         }
     }
 }
